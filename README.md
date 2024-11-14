@@ -37,3 +37,7 @@ Además de gestionar recetas, la app incluye una sección de recetas recientes q
 [Video presentación](https://drive.google.com/file/d/1jg3xfmlLZ_ihHnbS2Bjwol3Uxeh8tftc/view?usp=sharing)
 [Video uso de app por persona externa a la carrera](https://drive.google.com/file/d/1ApTf0V_jB4zAYu0M4qYfMBCoPJi1xDoI/view?usp=sharing)
 
+## Enlace app
+
+[Apk](https://drive.google.com/file/d/1Jso1hZUwL37n3hufIN8n_ukh-T_e8Hxs/view?usp=sharing)
+
