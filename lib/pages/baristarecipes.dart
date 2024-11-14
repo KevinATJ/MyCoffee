@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_coffee/class/recipe.dart';
 
-class RecipeDetails extends StatelessWidget {
+class BaristaRecipes extends StatelessWidget {
   final Recipe recipe;
 
-  const RecipeDetails({super.key, required this.recipe});
+  const BaristaRecipes({super.key, required this.recipe});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class RecipeDetails extends StatelessWidget {
             const SizedBox(height: 8.0),
             Row(
               children: [
-                const Icon(Icons.star, color: Colors.yellow),
+                const Icon(Icons.calendar_today, color: Colors.green), 
                 const SizedBox(width: 8.0),
                 Text(
-                  recipe.calification.toString(),
+                  'Fecha: ${recipe.date}', 
                   style: const TextStyle(fontSize: 20.0),
                 ),
               ],
@@ -59,15 +59,6 @@ class RecipeDetails extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Text(recipe.preparation),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Comentario añadido')),
-                );
-              },
-              child: const Text('Añadir Comentario'),
-            ),
           ],
         ),
       ),

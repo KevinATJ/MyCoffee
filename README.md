@@ -1,50 +1,39 @@
 # MyCoffee
 
 ## Descripción
-MyCoffee es mi nueva aplicación móvil creada para los amantes del café, permitiéndote explorar, personalizar y compartir recetas de café a tu gusto. 
-¿Quieres perfeccionar tus técnicas o probar algo nuevo?
-MyCoffee te acompaña con guías predefinidas y recetas personalizadas, brindándote todo lo necesario para que cada taza sea perfecta.
-Nuestra interfaz amigable y atractiva, diseñada especialmente para los fanáticos del café, te permitirá disfrutar de una agradable experiencia visual, con imágenes e íconos representativos para cada receta.
-MyCoffee: Tu pasión por el café, en tu propio bolsillo.
+MyCoffee es una aplicación móvil desarrollada en Flutter que permite a los usuarios gestionar y personalizar sus propias recetas de café. Esta misma te ofrece funcionalidades para explorar recetas de un barista, crear y almacenar recetas personalizadas, y registrar detalles clave de cada receta, como el nombre, la imagen, los requisitos, el tiempo de preparación y las instrucciones.
 
-<<<<<<< HEAD
-MyCoffee es mi nueva aplicación móvil creada para los amantes del café, permitiéndote explorar, personalizar y compartir recetas de café a tu gusto. 
-¿Quieres perfeccionar tus técnicas o probar algo nuevo? 
-MyCoffee te acompaña con guías predefinidas y recetas personalizadas, brindándote todo lo necesario para que cada taza sea perfecta.
-Nuestra interfaz amigable y atractiva, diseñada especialmente para los fanáticos del café, te permitirá disfrutar de una agradable experiencia visual, con imágenes e íconos representativos para cada receta. 
-MyCoffee: Tu pasión por el café, en tu propio bolsillo.
-=======
->>>>>>> bcf9b9c577728228d0b12d05969c677514cd6825
+Además de gestionar recetas, la app incluye una sección de recetas recientes que permite a los usuarios acceder fácilmente a las recetas recientes. La interfaz es intuitiva y personalizable, con iconos y temas adaptados a la temática de la aplicación. También incluye un formulario de encuesta que recopila la experiencia del usuario con la app, y envía esta información por correo electrónico al desarrollador para mejorar la experiencia y funcionalidad del proyecto.
+
 
 ## Requerimientos
 
 ### Requerimientos funcionales
 
 1. MyCoffee debe permitir a los usuarios ver, crear, editar y eliminar recetas de café.
-2. MyCoffee debe permitir a los usuarios personalizar(guardar, eliminar) una lista de recetas favoritas.
-3. MyCoffee debe permitir a los usuarios seguir guías predefinidas para distintos tipos de café.
-4. MyCoffee debe permitir a los usuarios filtrar distintas recetas de café según sus preferencias(tecnica de extracción,
-   tiempo de preparación, ingredientes, tipo de grano, equipo necesario,etc).
-5. MyCoffee debe permitir a los usuarios compartir sus recetas y/o experiencias de preparación de café.
-6. MyCoffee debe permitir a los usuarios calificar recetas y/o experiencias de preparación de café.
-7. MyCoffee debe permitir a los usuarios ver los productos necesarios para una correcta preparación de la receta de café.
+2. MyCoffee debe permitir a los usuarios personalizar(guardar, eliminar) recetas de café.
+3. MyCoffee debe permitir a los usuarios ver un barista con recetas fijas.
+4. MyCoffee debe permitir a los usuarios agregar recetas del barista y verlas en sus recetas.
+5. MyCoffee debe permitir a los usuarios ver sus recetas recientes.
+6. MyCoffee debe permitir a los usuarios compartir recetas.
+7. MyCoffee debe permitir a los usuarios completar y compartir una encuesta sobre sus opinión de la aplicación.
+8. MyCoffe debe permitir a los usuarios usar la cámara para agregar fotos a las recetas.
 
 
 ### Requerimientos no funcionales
 
-1. MyCoffee debe presentar una interfaz intuitiva y amigable para una optimizada experiencia dentro de esta.
-2. MyCoffee debe presentar imagenes relacionadas a los productos necesarios para cada tipo de café.
-3. MyCoffee debe seguir una gama de colores atractiva y acorde a la temática de recetas de café.
-4. MyCoffee debe presentar iconos acordes y de fácil identificación.
+1. MyCoffee debe presentar una interfaz amigable y una paleta de colores reconocible.
+2. MyCoffee debe presentar imagenes relacionadas a las recetas.
+3. MyCoffee debe presentar un icono de aplicación propio.
 
-## Diagrama de clases
-<<<<<<< HEAD
+## Diagramas
 
-![Diagrama de Clases](assets/DiagramaMyCoffe.png)
+
+![Diagrama de información](assets/DiagramaDeInformación.png)
+![Diagrama de flujo](assets/DiagramaDeFlujoDeUsuario.png)
 
 ## Enlaces videos
 
-[Video presentación](https://drive.google.com/file/d/1N9043VJ-9QV7QKd6fKoG5D9J3KNlbRmq/view?usp=sharing)
-[Video uso en emulador android](https://drive.google.com/file/d/1REG61jnd98l03gh9Y_LQmFl6z4hMyqJG/view?usp=sharing)
-=======
->>>>>>> bcf9b9c577728228d0b12d05969c677514cd6825
+[Video presentación](https://drive.google.com/file/d/1jg3xfmlLZ_ihHnbS2Bjwol3Uxeh8tftc/view?usp=sharing)
+[Video uso de app por persona externa a la carrera](https://drive.google.com/file/d/1ApTf0V_jB4zAYu0M4qYfMBCoPJi1xDoI/view?usp=sharing)
+

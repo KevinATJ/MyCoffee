@@ -1,5 +1,3 @@
-import 'commentary.dart';
-
 class Recipe {
   String name;
   String description;
@@ -8,25 +6,37 @@ class Recipe {
   int preparationTime;
   String extractionTechnique;
   String grainType;
-  double calification;
   String image;
   int id;
-  List<Commentary> comments;
+  String date; 
 
   Recipe(
-      this.name,
-      this.description,
-      this.requirements,
-      this.preparation,
-      this.preparationTime,
-      this.extractionTechnique,
-      this.grainType,
-      this.calification,
-      this.image,
-      this.id,
-      this.comments);
+    this.name,
+    this.description,
+    this.requirements,
+    this.preparation,
+    this.preparationTime,
+    this.extractionTechnique,
+    this.grainType,
+    this.image,
+    this.id,
+    this.date, 
+  );
 
-  static List<Recipe> recipeList = [
+  static List<Recipe> recentRecipes = [];
+
+  static void addRecentRecipe(Recipe recipe) {
+
+    if (recentRecipes.contains(recipe)) {
+      recentRecipes.remove(recipe); 
+    }
+    recentRecipes.insert(0, recipe);
+    if (recentRecipes.length > 10) {
+      recentRecipes.removeLast();
+    }
+  }
+
+  static List<Recipe> baristaRecipeList = [
     Recipe(
       'Espresso Clásico',
       'Descripción de la receta 1',
@@ -35,10 +45,9 @@ class Recipe {
       8,
       '',
       '',
-      4.5,
       'assets/icons/CafeEspresso.png',
       1,
-      [],
+      '2024-11-13', 
     ),
     Recipe(
       'Cappuccino',
@@ -48,10 +57,9 @@ class Recipe {
       7,
       '',
       '',
-      4.0,
       'assets/icons/CafeCappucino.png',
       2,
-      [],
+      '2024-11-13',
     ),
     Recipe(
       'Flat White',
@@ -61,10 +69,9 @@ class Recipe {
       6,
       '',
       '',
-      3.5,
       'assets/icons/CafeFlatWhite.png',
       3,
-      [],
+      '2024-11-13',
     ),
     Recipe(
       'Mocha',
@@ -74,61 +81,27 @@ class Recipe {
       8,
       '',
       '',
-      5.0,
       'assets/icons/CafeMocha.png',
       4,
-      [],
-    ),
-  ];
-
-  static List<Recipe> favoriteRecipeList = [
-    Recipe(
-      'Mocha',
-      'Descripción de la receta favorita',
-      ['18g de café espresso ', '2 cucharadas de chocolate en polvo o jarabe de chocolate','120ml de leche' ,'Máquina de espresso', 'Vaporizador de leche'],
-      '1) Prepara un shot de espresso(2 minutos).\n\n2) Mezcla el chocolate con el espresso(1 minuto).\n\n3) Vaporiza la leche y viértela sobre la mezcla de chocolate y café(3 minutos).\n\n4) Añade una pequeña capa de espuma en la parte superior(1 minuto).\n\n4) Decora con crema batida o más chocolate(1 minuto).\n\n5) Sirve y disfruta!!.\n\n',
-      8,
-      '',
-      '',
-      5.0,
-      'assets/icons/CafeMocha.png',
-      4,
-      [],
+      '2024-11-13',
     ),
 
   ];
 
-  static List<Recipe> userRecipeList = [
-    Recipe(
-      'Macchiato',
-      'Descripción de la receta creada',
-      ['18g de café espresso ', 'Una pequeña cantidad de leche','Máquina de espresso', 'Vaporizador de leche'],
-      '1) Prepara un shot de espresso(2 minutos).\n\n2) Vaporiza un poco de leche, creando una pequeña cantidad de espuma(2 minutos).\n\n3) Añade una cucharada de espuma de leche sobre el espresso(1 minutos).\n\n4) Sirve y disfruta!!.\n\n',
-      5,
-      '',
-      '',
-      3.0,
-      'assets/icons/CafeMacchiato.png',
-      4,
-      [],
-    ),
+  static List<Recipe> MyRecipeList = [ ];
 
-  ];
 
   static Recipe getRecipeById(int id) {
-    return recipeList.firstWhere((recipe) => recipe.id == id);
+    return baristaRecipeList.firstWhere((recipe) => recipe.id == id);
   }
 
-  static Recipe getFavoriteRecipeById(int id) {
-    return favoriteRecipeList.firstWhere((recipe) => 1 == id);
+  static Recipe getMyRecipeById(int id) {
+    return MyRecipeList.firstWhere((recipe) => recipe.id == id);
   }
 
-  static Recipe getUserRecipeById(int id) {
-    return userRecipeList.firstWhere((recipe) => 1 == id);
+  static void removeRecipe(int index) {
+    MyRecipeList.removeAt(index);
   }
-
-
-
-
 }
+
 

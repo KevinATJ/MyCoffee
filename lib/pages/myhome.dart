@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_coffee/class/recipe.dart';
-import 'package:my_coffee/pages/recipedetails.dart';
-import 'package:my_coffee/class/product.dart';
-import 'package:my_coffee/pages/productdetails.dart';
-
+import 'package:my_coffee/pages/baristarecipes.dart';
+import 'package:my_coffee/pages/myrecipesdetails.dart';
+import 'package:my_coffee/pages/recipeform.dart';
+import 'package:my_coffee/pages/surveyform.dart'; 
 
 class Myhome extends StatefulWidget {
   const Myhome({super.key});
 
   @override
   State<Myhome> createState() => _MyhomeState();
-
 }
 
 class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
@@ -19,7 +18,12 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this); 
+    _tabController = TabController(length: 3, vsync: this);
+
+
+    _tabController.addListener(() {
+      setState(() {}); 
+    });
   }
 
   @override
@@ -28,118 +32,27 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  void showSearchMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Búsqueda realizada')),
-    );
-  }
-
-  void showFilterMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Filtro aplicado')),
-    );
-  }
-
-  bool isFavorite = false;
-  List<bool> favoriteStates = [false, false, false, false];
-
-  void changeFavorite() {
-    setState(() {
-      isFavorite = !isFavorite; 
-    });
-    if (isFavorite) {
-      showFavoriteMessage();
-    } else {
-      showUnfavoriteMessage();
-    }
-  }
-
-  void showFavoriteMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Añadido a favoritos')),
-    );
-  }
-
-  void showUnfavoriteMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Eliminado de favoritos')),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MyCoffee Home'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.feedback),
+            onPressed: () {
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SurveyForm()),
+              );
+            },
+          ),
+        ],
       ),
       backgroundColor: Colors.brown.shade100,
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const UserAccountsDrawerHeader(
-              accountName: Text('Kevin Troncoso'),
-              accountEmail: Text('Kevintjara@gmail.com'),
-              currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage('assets/icons/usuario.png'),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Perfil'),
-              onTap: () {
-                Navigator.pushNamed(context, '/profile');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.favorite),
-              title: const Text('Recetas favoritas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/favorites');
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.list_alt),
-              title: const Text('Mis recetas'),
-              onTap: () {
-                Navigator.pushNamed(context, '/myrecipes');
-              },
-            ),
-            const Divider(),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Cerrar sesión'),
-              onTap: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
-          ],
-        ),
-      ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.filter_list),
-                  onPressed: showFilterMessage,
-                ),
-                const Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Buscador...',
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: showSearchMessage,
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -148,48 +61,46 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
                   child: ListView(
                     padding: const EdgeInsets.all(16.0),
                     children: [
-                      createRecipeCard(context, 'Espresso Clásico', 'Café fuerte y concentrado con sabor intenso.', 1, 'assets/icons/CafeEspresso.png',0),
-                      createRecipeCard(context, 'Cappucino', 'Combinación perfecta de espresso, leche vaporizada y espuma.', 2, 'assets/icons/CafeCappucino.png',1),
-                      createRecipeCard(context, 'Flat White', 'Bebida suave con menos espuma y más leche que el cappuccino.', 3, 'assets/icons/CafeFlatWhite.png',2),
-                      createRecipeCard(context, 'Mocha', 'Deliciosa combinación de espresso, chocolate y leche espumada.', 4, 'assets/icons/CafeMocha.png',3),
+                      createBaristaRecipeCard(context, 'Espresso Clásico', 'Café fuerte y concentrado con sabor intenso.', 1, 'assets/icons/CafeEspresso.png', 0),
+                      createBaristaRecipeCard(context, 'Cappucino', 'Combinación perfecta de espresso, leche vaporizada y espuma.', 2, 'assets/icons/CafeCappucino.png', 1),
+                      createBaristaRecipeCard(context, 'Flat White', 'Bebida suave con menos espuma y más leche que el cappuccino.', 3, 'assets/icons/CafeFlatWhite.png', 2),
+                      createBaristaRecipeCard(context, 'Mocha', 'Deliciosa combinación de espresso, chocolate y leche espumada.', 4, 'assets/icons/CafeMocha.png', 3),
                     ],
                   ),
                 ),
+                createMyRecipeCard(context),
                 Center(
-                  child: Column(
-                    children: [
-                      const Text(
-                        'Productos: Electrodomésticos e Ingredientes',
-                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 10.0),
-                      createProductCard(context, 'Máquina de espresso', 'Ideal para preparar espresso de alta calidad en casa.', 1),
-                      createProductCard(context, 'Vaporizador de leche', 'Perfecto para espumar leche y crear texturas ideales para capuchinos y lattes.', 2),
-                      createProductCard(context, 'Grano de café espresso', 'Granos seleccionados para hacer espresso, con un sabor fuerte y concentrado.', 3),
-                      createProductCard(context, 'Leche espumosa', 'Ideal para preparar cafés con leche, capuchinos o lattes.', 4),
-                    ],
-                  ),
-                ),
-                const Center(
                   child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'About MyCoffee',
-                          style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 20.0),
-                        Text(
-                          'MyCoffee es una aplicación dedicada a los amantes del café. Aquí puedes descubrir nuevas recetas, compartir tus propias creaciones y aprender más sobre la preparación perfecta del café.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                      ],
-                    ),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Recipe.recentRecipes.isEmpty
+                        ? const Text(
+                            'No tienes recetas recientes.',
+                            style: TextStyle(fontSize: 18.0, color: Colors.grey),
+                          )
+                        : ListView.builder(
+                            itemCount: Recipe.recentRecipes.length,
+                            itemBuilder: (context, index) {
+                              final recipe = Recipe.recentRecipes[index];
+                              return Card(
+                                margin: const EdgeInsets.symmetric(vertical: 8.0),
+                                child: ListTile(
+                                  leading: Image.asset(recipe.image, width: 50.0, height: 50.0),
+                                  title: Text(recipe.name),
+                                  subtitle: Text("Tiempo: ${recipe.preparationTime} min"),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => MyRecipeDetails(recipe: recipe),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -198,15 +109,30 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
       bottomNavigationBar: TabBar(
         controller: _tabController,
         tabs: const [
-          Tab(text: 'Recetas', icon: Icon(Icons.book)),
-          Tab(text: 'Productos', icon: Icon(Icons.kitchen)),
-          Tab(text: 'About Us', icon: Icon(Icons.info)),
+          Tab(text: 'Barista', icon: Icon(Icons.book)),
+          Tab(text: 'Mis recetas', icon: Icon(Icons.folder)),
+          Tab(text: 'Recetas recientes', icon: Icon(Icons.history)),
         ],
       ),
+      floatingActionButton: _tabController.index == 1
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecipeForm(), 
+                  ),
+                );
+              },
+              child: const Icon(Icons.add),
+            )
+          : null, 
     );
   }
 
-  Widget createRecipeCard(BuildContext context, String title, String description, int recipeId, String imagePath, int index) {
+Widget createBaristaRecipeCard(BuildContext context, String title, String description, int recipeId, String imagePath, int index) {
+  bool isAddedToMyRecipes = false; 
+
   return Card(
     margin: const EdgeInsets.symmetric(vertical: 8.0),
     elevation: 4.0,
@@ -230,25 +156,43 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
         ),
         trailing: IconButton(
           icon: Icon(
-            favoriteStates[index] ? Icons.star : Icons.star_border_sharp,
+            isAddedToMyRecipes ? Icons.check : Icons.add,
+            color: Colors.brown,
           ),
           onPressed: () {
             setState(() {
-              favoriteStates[index] = !favoriteStates[index];
+              isAddedToMyRecipes = !isAddedToMyRecipes;
+
+              if (isAddedToMyRecipes) {
+                Recipe selectedRecipe = Recipe.getRecipeById(recipeId);
+                Recipe newRecipe = Recipe(
+                  selectedRecipe.name,
+                  selectedRecipe.description,
+                  List<String>.from(selectedRecipe.requirements),
+                  selectedRecipe.preparation,
+                  selectedRecipe.preparationTime,
+                  selectedRecipe.extractionTechnique,
+                  selectedRecipe.grainType,
+                  selectedRecipe.image,
+                  _generateUniqueId(), 
+                  selectedRecipe.date,
+                );
+
+                Recipe.MyRecipeList.add(newRecipe);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Añadido a Mis recetas')),
+                );
+              }
             });
-            if (favoriteStates[index]) {
-              showFavoriteMessage();
-            } else {
-              showUnfavoriteMessage();
-            }
           },
         ),
         onTap: () {
           Recipe selectedRecipe = Recipe.getRecipeById(recipeId);
+          Recipe.addRecentRecipe(selectedRecipe); 
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RecipeDetails(
+              builder: (context) => BaristaRecipes(
                 recipe: selectedRecipe,
               ),
             ),
@@ -258,24 +202,84 @@ class _MyhomeState extends State<Myhome> with SingleTickerProviderStateMixin {
     ),
   );
 }
+int _generateUniqueId() {
+  int maxId = Recipe.MyRecipeList.isEmpty
+      ? 0
+      : Recipe.MyRecipeList.map((e) => e.id).reduce((a, b) => a > b ? a : b);
 
-  Widget createProductCard(BuildContext context, String productName, String description, int productId) {
-    return ListTile(
-      leading: const Icon(Icons.kitchen_sharp),
-      title: Text(productName),
-      subtitle: Text(description),
-      onTap: () {
-        Product selectedProduct = Product.getProductById(productId);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductDetails(
-              product: selectedProduct,
+  return maxId + 1;
+}
+
+  Widget createMyRecipeCard(BuildContext context) {
+    if (Recipe.MyRecipeList.isEmpty) {
+      return const Center(
+        child: Text(
+          "No tienes recetas agregadas en Mis Recetas",
+          style: TextStyle(fontSize: 18.0, color: Colors.grey),
+        ),
+      );
+    } else {
+      return ListView.builder(
+        itemCount: Recipe.MyRecipeList.length,
+        itemBuilder: (context, index) {
+          final recipe = Recipe.MyRecipeList[index];
+          return Card(
+            child: ListTile(
+              leading: Image.asset(recipe.image, width: 50.0, height: 50.0),
+              title: Text(recipe.name),
+              subtitle: Text("Tiempo: ${recipe.preparationTime} min"),
+              onTap: () {
+                Recipe.addRecentRecipe(recipe);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyRecipeDetails(recipe: recipe),
+                  ),
+                );
+              },
+              trailing: IconButton(
+                icon: const Icon(Icons.delete, color: Colors.red),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Confirmar eliminación'),
+                      content: const Text('¿Estás seguro de que quieres eliminar esta receta?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); 
+                          },
+                          child: const Text('Cancelar'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              Recipe.removeRecipe(index);
+                            });
+                            Navigator.of(context).pop();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Receta eliminada')),
+                            );
+                          },
+                          child: const Text('Eliminar'),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    }
   }
 }
+
+
+
+
+
+
 

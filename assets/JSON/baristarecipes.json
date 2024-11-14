@@ -1,0 +1,47 @@
+[
+    {
+      "name": "Espresso Clásico",
+      "description": "Descripción de la receta 1",
+      "requirements": ["18-20g de café molido fino", "Máquina de espresso"],
+      "preparation": "1) Precalienta la máquina de espresso(5 minutos).\n\n2) Coloca el café molido en el portafiltro y compacta ligeramente(2 minutos).\n\n3) Extrae el espresso en una taza de 25-30 ml.(1 minuto).\n\n4) Sirve y disfruta!!.\n\n",
+      "preparationTime": 8,
+      "grainType": "",
+      "image": "assets/icons/CafeEspresso.png",
+      "recipeId": 1,
+      "date": "2024-11-13"
+    },
+    {
+      "name": "Cappuccino",
+      "description": "Descripción de la receta 2",
+      "requirements": ["18g de café espresso", "120ml de leche", "Máquina de espresso", "Vaporizador de leche"],
+      "preparation": "1) Prepara un shot de espresso(2 minutos).\n\n2) Calienta y vaporiza la leche hasta que forme espuma(3 minutos).\n\n3) Vierte la leche sobre el espresso, creando una capa de espuma en la parte superior(1 minuto).\n\n4) Espolvorea cacao en polvo(1 minuto).\n\n5) Sirve y disfruta!!.\n\n",
+      "preparationTime": 7,
+      "grainType": "",
+      "image": "assets/icons/CafeCappucino.png",
+      "recipeId": 2,
+      "date": "2024-11-13"
+    },
+    {
+      "name": "Flat White",
+      "description": "Descripción de la receta 3",
+      "requirements": ["18g de café espresso", "150ml de leche", "Máquina de espresso", "Vaporizador de leche"],
+      "preparation": "1) Prepara un shot de espresso(2 minutos).\n\n2) Vaporiza la leche, sin dejar que forme demasiada espuma(3 minutos).\n\n3) Vierte la leche sobre el espresso, dejando una capa muy fina de espuma(1 minuto).\n\n4) Sirve y disfruta!!.\n\n",
+      "preparationTime": 6,
+      "grainType": "",
+      "image": "assets/icons/CafeFlatWhite.png",
+      "recipeId": 3,
+      "date": "2024-11-13"
+    },
+    {
+      "name": "Mocha",
+      "description": "Descripción de la receta 4",
+      "requirements": ["18g de café espresso", "2 cucharadas de chocolate en polvo o jarabe de chocolate", "120ml de leche", "Máquina de espresso", "Vaporizador de leche"],
+      "preparation": "1) Prepara un shot de espresso(2 minutos).\n\n2) Mezcla el chocolate con el espresso(1 minuto).\n\n3) Vaporiza la leche y viértela sobre la mezcla de chocolate y café(3 minutos).\n\n4) Añade una pequeña capa de espuma en la parte superior(1 minuto).\n\n5) Decora con crema batida o más chocolate(1 minuto).\n\n6) Sirve y disfruta!!.\n\n",
+      "preparationTime": 8,
+      "grainType": "",
+      "image": "assets/icons/CafeMocha.png",
+      "recipeId": 4,
+      "date": "2024-11-13"
+    }
+]
+  
